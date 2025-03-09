@@ -1,15 +1,35 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f9f5;
+/* Reset & general settings */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Fredoka One', cursive;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('masters.webp') no-repeat center center fixed;
+    background-size: cover;
     color: #333;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 header {
-    background-color: #2e8b57;
+    background-color: rgba(46, 139, 87, 0.9);
     color: white;
     padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .header-content {
@@ -21,54 +41,70 @@ header {
 }
 
 .logo {
-    width: 90px;
-    height: 120px;
-    margin-right: 60px;
-    border-radius: 10px;
-    object-fit: fill;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
 }
 
 header h1 {
-    margin: 0;
-    padding-left: 25px;
+    font-size: 2em;
+    padding-left: 60px;
 }
 
 header p {
-    margin: 5px 0 0;
+    font-size: 1em;
+    padding-left: 140px;
 }
 
 main {
+    flex: 1;
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
 }
 
 .input-section, .players-list, .team-section {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     margin-bottom: 20px;
     padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #2e8b57;
 }
 
 input[type="text"], input[type="number"] {
-    padding: 8px;
+    padding: 10px;
     margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid #2e8b57;
+    border-radius: 8px;
+    font-size: 1em;
 }
 
 button {
-    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
     background-color: #2e8b57;
     color: white;
-    border: none;
-    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+    border: 2px solid #246b45;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 button:hover {
     background-color: #246b45;
+    transform: scale(1.05);
 }
 
 ul {
@@ -77,19 +113,39 @@ ul {
 }
 
 li {
-    padding: 5px 0;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #e0f7ea;
+    border-radius: 5px;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
-    background-color: #2e8b57;
+    padding: 15px;
+    background-color: rgba(46, 139, 87, 0.95);
     color: white;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .team {
-    background-color: #e0f7ea;
+    background-color: #f5fff5;
+    border: 2px solid #2e8b57;
     margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.team:hover {
+    transform: scale(1.03);
+}
+
+.team strong {
+    font-size: 1.2em;
+    color: #246b45;
+}
+
+.team em {
+    color: #555;
 }

@@ -1,70 +1,73 @@
 let players = [];
 
+// Add a player to the list
 function addPlayer() {
-    const nameInput = document.getElementById("playerName");
-    const handicapInput = document.getElementById("playerHandicap");
+    const name = document.getElementById('playerName').value.trim();
+    const handicap = parseFloat(document.getElementById('playerHandicap').value.trim());
 
-    const name = nameInput.value.trim();
-    const handicap = parseFloat(handicapInput.value);
-
-    if (name === "" || isNaN(handicap) || handicap < 0) {
-        alert("Please enter a valid name and handicap!");
+    if (!name || isNaN(handicap)) {
+        alert("Please enter both a name and a valid handicap.");
         return;
     }
 
     players.push({ name, handicap });
-    nameInput.value = "";
-    handicapInput.value = "";
+    displayPlayers();
 
-    updatePlayerList();
+    // Clear inputs
+    document.getElementById('playerName').value = '';
+    document.getElementById('playerHandicap').value = '';
 }
 
-function updatePlayerList() {
-    const list = document.getElementById("playerList");
-    list.innerHTML = "";
+// Display players list
+function displayPlayers() {
+    const playersList = document.getElementById('players');
+    playersList.innerHTML = '';
 
     players.forEach((player, index) => {
-        const li = document.createElement("li");
+        const li = document.createElement('li');
         li.textContent = `${player.name} (Handicap: ${player.handicap})`;
-        list.appendChild(li);
+        playersList.appendChild(li);
     });
 }
 
+// Generate fair teams and play golf sound
 function generateTeams() {
-    if (players.length < 2 || players.length % 2 !== 0) {
-        alert("Please add an even number of players (at least 2) to form teams.");
+    if (players.length < 2) {
+        alert("You need at least 2 players to form teams!");
         return;
     }
 
+    // Sort players by handicap
     const sortedPlayers = [...players].sort((a, b) => a.handicap - b.handicap);
-    const teams = [];
 
-    while (sortedPlayers.length > 0) {
-        const low = sortedPlayers.shift();
-        const high = sortedPlayers.pop();
-        teams.push([low, high]);
+    const teams = [];
+    while (sortedPlayers.length >= 2) {
+        const lowest = sortedPlayers.shift();
+        const highest = sortedPlayers.pop();
+        teams.push([lowest, highest]);
+    }
+
+    // If odd number of players, put the last one alone
+    if (sortedPlayers.length === 1) {
+        teams.push([sortedPlayers[0]]);
     }
 
     displayTeams(teams);
 }
 
+// Display the teams
 function displayTeams(teams) {
-    const container = document.getElementById("teamsContainer");
-    container.innerHTML = "<h2>Generated Teams</h2>";
+    const teamsDiv = document.getElementById('teams');
+    teamsDiv.innerHTML = '';
 
     teams.forEach((team, index) => {
-        const teamDiv = document.createElement("div");
-        teamDiv.className = "team";
+        const div = document.createElement('div');
+        div.className = 'team';
 
-        const avgHandicap = ((team[0].handicap + team[1].handicap) / 2).toFixed(1);
+        const teamNames = team.map(player => `${player.name} (HC: ${player.handicap})`).join(' & ');
+        const avgHandicap = (team.reduce((sum, player) => sum + player.handicap, 0) / team.length).toFixed(1);
 
-        teamDiv.innerHTML = `
-            <strong>Team ${index + 1}</strong><br>
-            ${team[0].name} (Handicap: ${team[0].handicap})<br>
-            ${team[1].name} (Handicap: ${team[1].handicap})<br>
-            <em>Avg Handicap: ${avgHandicap}</em>
-        `;
-
-        container.appendChild(teamDiv);
+        div.innerHTML = `<strong>Team ${index + 1}</strong><br>${teamNames}<br><em>Avg Handicap: ${avgHandicap}</em>`;
+        teamsDiv.appendChild(div);
     });
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gilbert x Cole's Golf Bonanza</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="./cole.png" alt="Golf Bonanza Logo" class="logo">
+            <div>
+                <h1>Gilbert x Cole's Golf Bonanza</h1>
+                <p>Create fair 2-person teams because we can't all hit it 312 down the dick!</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <h2>Add Player</h2>
+            <input type="text" id="playerName" placeholder="Player Name">
+            <input type="number" id="playerHandicap" placeholder="Handicap" min="0">
+            <button id="addPlayerButton">Add Player</button>
+        </section>
+
+        <section class="players-list">
+            <h2>Players</h2>
+            <ul id="playerList"></ul>
+        </section>
+
+        <section class="team-section">
+            <button onclick="generateTeams()">Generate Teams</button>
+            <div id="teamsContainer"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Gilbert x Cole &copy; 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

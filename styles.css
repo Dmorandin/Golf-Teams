@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('masters.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    padding: 20px;
+}
+
+.header-content {
+    display: flex;
+
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.logo {
+    height: 200px;
+    width: auto;
+    border-radius: 60px;
+}
+
+.title-section {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+}
+
+header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+.input-section, .players-list, .team-section {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    width: calc(100% - 40px);
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #2e8b57;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    border: 2px solid #246b45;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button i {
+    font-size: 1.2em;
+}
+
+button:hover {
+    background-color: #246b45;
+    transform: scale(1.05);
+}
+
+#players {
+    list-style: none;
+    padding: 0;
+}
+
+#players li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: rgba(46, 139, 87, 0.8);
+    border-radius: 5px;
+}
+
+.team {
+    margin: 10px 0;
+    padding: 15px;
+    background-color: rgba(46, 139, 87, 0.8);
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .logo {
+        height: 110px;
+        margin-bottom: 10px;
+        border-radius: 60px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+}
